@@ -1,0 +1,16 @@
+.quest-list {
+  background-color: cadetblue;
+  margin: $margin-secondary;
+  padding: $padding-secondary;
+  ul {
+    list-style: none;
+    margin-top: $margin-secondary;
+    li {
+      display: flex;
+      padding: $padding-primary;
+      span {
+        margin-right: $margin-secondary;
+      }
+    }
+  }
+}

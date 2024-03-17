@@ -1,0 +1,14 @@
+*,
+body::before,
+body::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  max-width: 960px;
+  margin: auto;
+  background-color: bisque;
+  font-family: $font-family-primary;
+}
