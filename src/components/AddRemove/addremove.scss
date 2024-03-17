@@ -1,0 +1,11 @@
+.add-remove {
+  background-color: gold;
+  margin: $margin-secondary;
+  padding: $padding-secondary;
+  input {
+    padding: $padding-primary;
+  }
+  button {
+    padding: $padding-primary;
+  }
+}
