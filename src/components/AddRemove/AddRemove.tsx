@@ -14,6 +14,11 @@ const counter = (state: StateProps, action: ActionProps) => {
       return {
         sum: state.sum + action.number,
       }
+    case "reset":
+      return {
+        sum: (state.sum = 0),
+      }
+
     default:
       return state
   }
@@ -39,6 +44,13 @@ const AddRemove = () => {
         }}
       >
         Add
+      </button>
+      <button
+        onClick={() => {
+          dispatch({ type: "reset", number: 0 })
+        }}
+      >
+        Reset
       </button>
     </section>
   )

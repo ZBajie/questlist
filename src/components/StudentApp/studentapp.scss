@@ -1,0 +1,11 @@
+.student-app {
+  background-color: rgb(84, 227, 134);
+  margin: $margin-secondary;
+  padding: $padding-secondary;
+  .search-teacher {
+    background-color: azure;
+    width: fit-content;
+    margin: $margin-secondary;
+    padding: $padding-secondary;
+  }
+}
