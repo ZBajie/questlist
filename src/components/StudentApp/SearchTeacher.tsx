@@ -10,12 +10,11 @@ const SearchTeacher = () => {
   const onClick = () => {
     if (searchName.current) {
       const name: string = searchName.current.value
-      console.log(name)
       setTeacherIndex(-1)
       global.teachers.map((teacher, index) => {
-        if (teacher.name === name) {
+        if (teacher.name.toLowerCase() === name.toLowerCase()) {
           setTeacherIndex(index)
-          console.log(teacherIndex)
+          console.log(index)
         }
       })
     }
@@ -25,7 +24,7 @@ const SearchTeacher = () => {
       <h2>Search teacher</h2>
       <input type="text" placeholder="Name" ref={searchName} />
       <button onClick={onClick}>Search</button>
-      {teacherIndex > 0 && (
+      {teacherIndex >= 0 && (
         <div className="teacher-card">
           <h3>{global.teachers[teacherIndex].name}</h3>
           <p>Subject: {global.teachers[teacherIndex].subject}</p>
