@@ -1,3 +1,4 @@
+import PokemonsFetch from "./PokemonsFetch"
 import {
   pokemonsGlobalContext,
   initialPokemonsGlobal,
@@ -8,7 +9,10 @@ const Pokemons = () => {
   return (
     <>
       <pokemonsGlobalContext.Provider value={initialPokemonsGlobal}>
-        <PokemonsList />
+        <section className="pokemons">
+          <PokemonsList />
+          <PokemonsFetch />
+        </section>
       </pokemonsGlobalContext.Provider>
     </>
   )
