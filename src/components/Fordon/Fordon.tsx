@@ -33,7 +33,7 @@ type Motorcycles = {
 
 type Tank = {
   type: "tank"
-  namn: string
+  name: string
   pipeLength: number
   color: "green" | "camoflage"
   beltLength: number
@@ -42,7 +42,7 @@ type Tank = {
 
 type Veichles = Cars | Boats | Motorcycles | Tank
 
-const cars: Veichles[] = [
+const veichles: Veichles[] = [
   {
     type: "cars",
     name: "Volvo",
@@ -52,9 +52,6 @@ const cars: Veichles[] = [
     toebar: false,
     fuel: "electric",
   },
-]
-
-const boats: Veichles[] = [
   {
     type: "motorboat",
     name: "storebro",
@@ -62,8 +59,6 @@ const boats: Veichles[] = [
     engines: 2,
     outboards: false,
   },
-]
-const motorcycles: Veichles[] = [
   {
     type: "motorcycles",
     name: "honda",
@@ -73,10 +68,43 @@ const motorcycles: Veichles[] = [
     offroad: false,
   },
 ]
+
 const Fordon = () => {
+  const cars = veichles.filter((item) => item.type === "cars")
+
   return (
     <section className="fordon">
       <h2>Veichle</h2>
+      <ul>
+        {veichles.map((veichle, i) => {
+          return <li key={i}>{veichle.type}</li>
+        })}
+      </ul>
+      <label htmlFor="car">1 Car</label>
+      <ul id="car">
+        {cars.map((car, i) => {
+          return (
+            <li key={i}>
+              {car.name}
+              {car.color} {car.type}
+            </li>
+          )
+        })}
+      </ul>
+      <ul>{veichles[0].type === "cars" && <li>{veichles[0].wheels}</li>}</ul>
+      <label htmlFor="cars">cars info</label>
+      <ul>
+        {cars.map((car, i) => (
+          <li key={i}>
+            {car.type === "cars" && (
+              <>
+                <p>Brand: {car.name}</p>
+                <p>Fuel: {car.fuel}</p>
+              </>
+            )}
+          </li>
+        ))}
+      </ul>
     </section>
   )
 }

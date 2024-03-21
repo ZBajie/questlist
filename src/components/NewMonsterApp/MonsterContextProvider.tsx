@@ -25,7 +25,7 @@ const initialMonsterState: MonsterState = {
     },
   ],
 }
-
+// createContext
 export const MonsterContext = createContext<{
   state: MonsterState
   dispatch: React.Dispatch<Action>
@@ -34,6 +34,7 @@ export const MonsterContext = createContext<{
   dispatch: () => null,
 })
 
+// useReducer
 type Action =
   | { type: "ADD"; payload: Monster }
   | { type: "REMOVE"; payload: string }
@@ -54,6 +55,7 @@ const reducer = (state: MonsterState, action: Action) => {
 type MonsterContextProviderProp = {
   children: React.ReactNode
 }
+
 function MonsterContextProvider({ children }: MonsterContextProviderProp) {
   // här kan vi använda useReducer eller useState
 

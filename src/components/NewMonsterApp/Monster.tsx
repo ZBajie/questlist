@@ -8,10 +8,12 @@ const Monster = () => {
   const [eyes, setEyes] = useState(2)
 
   const handleClick = () => {
-    dispatch({
-      type: "ADD",
-      payload: { name: name, eyes: eyes, tentacles: tentacles },
-    })
+    if (name.length > 2) {
+      dispatch({
+        type: "ADD",
+        payload: { name: name, eyes: eyes, tentacles: tentacles },
+      })
+    }
   }
   0
   return (
@@ -45,8 +47,9 @@ const Monster = () => {
       <input
         id="eyes"
         type="number"
-        onClick={(e) => {
-          setEyes(parseInt(e.currentTarget.value))
+        value={eyes}
+        onChange={(e) => {
+          setEyes(parseInt(e.target.value))
         }}
       />
       <button onClick={handleClick}>Add monster</button>

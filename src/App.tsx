@@ -1,4 +1,5 @@
 import AddRemove from "./components/AddRemove/AddRemove"
+import AnimalApp from "./components/Animals/AnimalApp"
 import Fordon from "./components/Fordon/Fordon"
 import MonstersApp from "./components/MonstersApp/MonstersApp"
 import NewMonstersApp from "./components/NewMonsterApp/NewMonsterApp"
@@ -9,6 +10,7 @@ import StudentApp from "./components/StudentApp/StudentApp"
 function App() {
   return (
     <>
+      <AnimalApp />
       <NewMonstersApp />
       <Fordon />
       <Pokemons />
