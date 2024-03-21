@@ -1,30 +1,39 @@
-import { createContext } from "react"
+import { createContext, useReducer } from "react"
+import {
+  AnimalGlobalProps,
+  AnimalProps,
+  initialAnimals,
+} from "./initialAnimals"
+// create AnimalContext
+export const AnimalContext = createContext<{
+  state: AnimalGlobalProps
+  dispatch: React.Dispatch<Action>
+}>({ state: initialAnimals, dispatch: () => null })
 
-export type AnimalProps = {
-  name: string
-  legs: number
+// AnimalReducer
+type Action =
+  | { type: "ADD"; payload: AnimalProps }
+  | {
+      type: "REMOVE"
+      payload: string
+    }
+
+const animalReducer = (state: AnimalGlobalProps, action: Action) => {
+  switch (action.type) {
+    case "ADD":
+      return {
+        Animals: [...state.Animals, action.payload],
+      }
+    case "REMOVE":
+      return {
+        Animals: state.Animals.filter((animals) => {
+          return animals.name !== action.payload
+        }),
+      }
+    default:
+      return state
+  }
 }
-
-export type AnimalGlobalProps = {
-  Animals: AnimalProps[]
-}
-
-export const initialAnimals: AnimalGlobalProps = {
-  Animals: [
-    {
-      name: "rabbit",
-      legs: 4,
-    },
-    {
-      name: "bird",
-      legs: 2,
-    },
-  ],
-}
-
-// createContext
-
-export const AnimalContext = createContext<AnimalGlobalProps>(initialAnimals)
 
 // AnimalContextProvider
 
@@ -33,8 +42,10 @@ type AnimalContextProviderProps = {
 }
 
 const AnimalContextProvider = ({ children }: AnimalContextProviderProps) => {
+  const [state, dispatch] = useReducer(animalReducer, initialAnimals)
+
   return (
-    <AnimalContext.Provider value={initialAnimals}>
+    <AnimalContext.Provider value={{ state, dispatch }}>
       {children}
     </AnimalContext.Provider>
   )

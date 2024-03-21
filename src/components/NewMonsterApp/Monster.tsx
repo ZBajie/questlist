@@ -15,13 +15,13 @@ const Monster = () => {
       })
     }
   }
-  0
+
   return (
     <div>
       <ul>
-        {state.monsters.map((m) => {
+        {state.monsters.map((m, i) => {
           return (
-            <li>
+            <li key={i}>
               Name: {m.name}, Tentacles: {m.tentacles}, Eyes: {m.eyes},
             </li>
           )
